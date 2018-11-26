@@ -1,4 +1,4 @@
-package fr.jbellec.cleancode.pattern.singleton;
+package fr.jbellec.demo.pattern.singleton;
 
 /**
  * Implémentation simple d'un singleton. L'instance est créée à

@@ -1,4 +1,4 @@
-package fr.jbellec.cleancode.pattern;
+package fr.jbellec.demo.pattern;
 
 public interface UserCrud {
 

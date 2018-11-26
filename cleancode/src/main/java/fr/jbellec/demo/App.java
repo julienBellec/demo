@@ -1,4 +1,4 @@
-package fr.jbellec.cleancode;
+package fr.jbellec.demo;
 
 /**
  * Hello world!

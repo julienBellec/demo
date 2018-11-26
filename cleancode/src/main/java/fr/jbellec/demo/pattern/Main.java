@@ -1,4 +1,4 @@
-package fr.jbellec.cleancode.pattern;
+package fr.jbellec.demo.pattern;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

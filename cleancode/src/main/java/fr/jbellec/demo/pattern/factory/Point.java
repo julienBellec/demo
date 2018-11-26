@@ -1,4 +1,4 @@
-package fr.jbellec.cleancode.pattern.factory;
+package fr.jbellec.demo.pattern.factory;
 
 public interface Point {
 

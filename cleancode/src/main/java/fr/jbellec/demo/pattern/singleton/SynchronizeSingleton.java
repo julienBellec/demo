@@ -1,4 +1,4 @@
-package fr.jbellec.cleancode.pattern.singleton;
+package fr.jbellec.demo.pattern.singleton;
 
 public class SynchronizeSingleton {
 	/** Constructeur privé */

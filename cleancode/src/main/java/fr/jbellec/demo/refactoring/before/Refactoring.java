@@ -1,4 +1,4 @@
-package fr.jbellec.cleancode.refactoring.before;
+package fr.jbellec.demo.refactoring.before;
 
 public class Refactoring {
 
