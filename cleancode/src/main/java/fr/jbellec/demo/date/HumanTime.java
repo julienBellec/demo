@@ -22,7 +22,7 @@ public class HumanTime {
 		ZonedDateTime zonedDateTime = ZonedDateTime.of(christmas, ZoneId.of("Europe/Helsinki"));
 		System.out.println(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).format(zonedDateTime));
 
-		String europeanDatePattern = "dd MMMM yyyy";
+		String europeanDatePattern = "eeee dd MMMM yyyy";
 		DateTimeFormatter europeanDateFormatter = DateTimeFormatter.ofPattern(europeanDatePattern);
 		System.out.println(europeanDateFormatter.format(christmas));
 	}
