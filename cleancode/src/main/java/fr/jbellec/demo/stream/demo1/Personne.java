@@ -18,7 +18,7 @@ public class Personne {
         this.yeux = yeux;
     }
 
-    public String toString() {
+	public String toString() {
         String s = "Je m'appelle " + nom + " " + prenom;
         s += ", je pèse " + poids + " Kg";
         s += ", et je mesure " + taille + " cm.";
