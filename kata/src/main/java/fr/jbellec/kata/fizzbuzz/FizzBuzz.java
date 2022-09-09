@@ -4,31 +4,38 @@ import static java.lang.String.valueOf;
 
 public class FizzBuzz {
 
-    public String kata(int start, int end) {
-        String result = valueOf(start);
-        while (start < end) {
-            start++;
-            String value = "";
-
-            if (start % 3 == 0) {
-                value = "Fizz";
-            }
-            if (valueOf(start).contains("3")){
-                value = value + "Fizz";
-            }
-            if (start % 5 == 0) {
-                value = value + "Buzz";
-            }
-            if (valueOf(start).contains("5")){
-                value = value + "Buzz";
-            }
+    public String kata(final int start, final int end) {
+        StringBuilder result = new StringBuilder(valueOf(start));
+        int index = start;
+        while (index < end) {
+            index++;
+            String value = applyRuleFor3(index) + applyRuleFor5(index);
 
             if ("".equals(value)) {
-                value = valueOf(start);
+                value = valueOf(index);
             }
-
-            result = result + " " + value;
+            result.append(" ").append(value);
         }
-        return result;
+        return result.toString();
+    }
+
+    private static String applyRuleFor3(int index) {
+        return applyRule(index, 3);
+    }
+
+    private static String applyRuleFor5(int index) {
+        return applyRule(index, 5);
+    }
+
+    private static String applyRule(int index, int ruleNumber) {
+        String value = "";
+        String label = ruleNumber == 5 ? "Buzz" : "Fizz";
+        if (index % ruleNumber == 0) {
+            value = label;
+        }
+        if (valueOf(index).contains(valueOf(ruleNumber))) {
+            value = value + label;
+        }
+        return value;
     }
 }
