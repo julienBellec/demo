@@ -1,41 +1,29 @@
 package fr.jbellec.kata.fizzbuzz;
 
 import static java.lang.String.valueOf;
+import static org.junit.platform.commons.util.StringUtils.isBlank;
 
 public class FizzBuzz {
 
-    public String kata(final int start, final int end) {
-        StringBuilder result = new StringBuilder(valueOf(start));
-        int index = start;
-        while (index < end) {
-            index++;
-            String value = applyRuleFor3(index) + applyRuleFor5(index);
-
-            if ("".equals(value)) {
-                value = valueOf(index);
-            }
-            result.append(" ").append(value);
-        }
-        return result.toString();
+    private FizzBuzz() {
+        throw new IllegalStateException("Utility class");
     }
 
-    private static String applyRuleFor3(int index) {
-        return applyRule(index, 3);
+    public static String appliquerTransformation(int valeur) {
+        String fizzBuzz = appliqueRegleTrois(valeur) + appliqueRegleCinq(valeur);
+        return (isBlank(fizzBuzz)) ? valueOf(valeur) : fizzBuzz;
     }
 
-    private static String applyRuleFor5(int index) {
-        return applyRule(index, 5);
+    private static String appliqueRegleTrois(int valeur) {
+        return estMultiple(valeur, 3) ? "Fizz" : "";
     }
 
-    private static String applyRule(int index, int ruleNumber) {
-        String value = "";
-        String label = ruleNumber == 5 ? "Buzz" : "Fizz";
-        if (index % ruleNumber == 0) {
-            value = label;
-        }
-        if (valueOf(index).contains(valueOf(ruleNumber))) {
-            value = value + label;
-        }
-        return value;
+    private static String appliqueRegleCinq(int valeur) {
+        return estMultiple(valeur, 5) ? "Buzz" : "";
+    }
+
+
+    private static boolean estMultiple(int valeur, int multiple) {
+        return valeur % multiple == 0;
     }
 }
