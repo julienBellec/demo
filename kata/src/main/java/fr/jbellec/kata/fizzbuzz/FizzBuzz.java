@@ -1,7 +1,6 @@
 package fr.jbellec.kata.fizzbuzz;
 
 import static java.lang.String.valueOf;
-import static org.junit.platform.commons.util.StringUtils.isBlank;
 
 public class FizzBuzz {
 
@@ -11,7 +10,7 @@ public class FizzBuzz {
 
     public static String appliquerTransformation(int valeur) {
         String fizzBuzz = appliqueRegleTrois(valeur) + appliqueRegleCinq(valeur);
-        return (isBlank(fizzBuzz)) ? valueOf(valeur) : fizzBuzz;
+        return ( "".equals(fizzBuzz)) ? valueOf(valeur) : fizzBuzz;
     }
 
     private static String appliqueRegleTrois(int valeur) {
