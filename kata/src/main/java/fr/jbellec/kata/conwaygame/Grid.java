@@ -6,13 +6,26 @@ import java.util.List;
 
 public class Grid {
 
+    public static final String END_OF_LINE = "\n";
+
     private HashMap<Coordinate, Cell> gridCoordinatesCells = new HashMap<>();
 
     public Grid(String initialGrid) {
-        int y = 0;
-        for (String line : initialGrid.split("\n")) {
-            generateCell(y, 0, line);
-            y++;
+        Coordinate coordinate = new Coordinate(0, 0);
+        getAllCels(coordinate, initialGrid);
+
+    }
+
+    private void getAllCels(Coordinate coordinate, String stringGrid) {
+        gridCoordinatesCells.put(coordinate, new Cell(stringGrid.substring(0, 1)));
+        stringGrid = stringGrid.substring(1);
+        Coordinate coordinateForNextCel = new Coordinate(coordinate.getX() + 1, coordinate.getY());
+        if (stringGrid.startsWith(END_OF_LINE)) {
+            coordinateForNextCel = new Coordinate(0, coordinate.getY() + 1);
+            stringGrid = stringGrid.substring(END_OF_LINE.length());
+        }
+        if (stringGrid.length() > 0) {
+            getAllCels(coordinateForNextCel, stringGrid);
         }
     }
 
@@ -27,13 +40,15 @@ public class Grid {
     public String toString() {
         return linesToString(0);
     }
+
     private String linesToString(final int startLineNumber) {
         String line = lineToString(startLineNumber);
-        if (gridCoordinatesCells.containsKey(new Coordinate(0, startLineNumber + 1))){
+        if (gridCoordinatesCells.containsKey(new Coordinate(0, startLineNumber + 1))) {
             return line + linesToString(startLineNumber + 1);
         }
         return line;
     }
+
     private String lineToString(final int lineNumber) {
         Coordinate coordinate = new Coordinate(0, lineNumber);
         if (gridCoordinatesCells.containsKey(coordinate)) {
@@ -47,22 +62,19 @@ public class Grid {
         if (gridCoordinatesCells.containsKey(coordonate)) {
             return gridCoordinatesCells.get(coordonate).toString() + cellsOfLineToString(x + 1, lineNumber);
         }
-        return "\n";
+        return END_OF_LINE;
     }
 
     public void appliquerRegle() {
         HashMap<Coordinate, Cell> gridAfterRule = new HashMap<>();
-        gridCoordinatesCells.keySet().forEach(coordonate -> applyRuleUnderPopulation(gridAfterRule, coordonate));
+        gridCoordinatesCells.keySet().forEach(coordinate -> gridAfterRule.put(coordinate, new Cell(applyRuleForCell(coordinate))));
         gridCoordinatesCells.putAll(gridAfterRule);
     }
 
-    private void applyRuleUnderPopulation(HashMap<Coordinate, Cell> gridAfterRule, Coordinate coordinate) {
+    private boolean applyRuleForCell(Coordinate coordinate) {
         Cell cell = gridCoordinatesCells.get(coordinate);
-        if (cell.isDead()) {
-            gridAfterRule.put(coordinate, new Cell(cell.isAlive()));
-            return;
-        }
-        gridAfterRule.put(coordinate, new Cell(getNbALiveNeighbours(coordinate) >= 2));
+        long nbALiveNeighbours = getNbALiveNeighbours(coordinate);
+        return (cell.isAlive() && (nbALiveNeighbours == 2 || nbALiveNeighbours == 3)) || (!cell.isAlive() && nbALiveNeighbours == 3 );
     }
 
     private long getNbALiveNeighbours(Coordinate coordinate) {
