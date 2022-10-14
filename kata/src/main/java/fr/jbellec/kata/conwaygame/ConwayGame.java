@@ -1,15 +1,21 @@
 package fr.jbellec.kata.conwaygame;
 
+import java.util.logging.Logger;
+
+import static java.lang.String.format;
+
 public class ConwayGame {
     public static void main(String[] args) {
+        Logger logger = Logger.getLogger(ConwayGame.class.getName());
         Grid grid = new Grid(".***...." + "\n" + ".***...." + "\n" + ".***...." + "\n" + "........" + "\n" + "........" + "\n");
-        System.out.println("Initial FRID");
-        System.out.println(grid);
+        logger.info("Initial GRID");
+        logger.info("\n" +grid.toString());
 
-        for (int i = 1; i < 20; i++) {
-            System.out.println("Generation nb " + i);
+        for (int i = 1; i < 15; i++) {
+
+            logger.info(format("Generation nb %d", i));
             grid.appliquerRegle();
-            System.out.println(grid);
+            logger.info("\n" +grid.toString());
 
         }
 
