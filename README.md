@@ -4,13 +4,7 @@
 
 # Projet java
 
-Contient des exemples de code sur :
-
-* enum (```package fr.jbellec.enum```)
-* lambda (```package fr.jbellec.lambda```)
-* nio (```package fr.jbellec.nio```)
-* quelques design pattern (```package fr.jbellec.patterns```)
-* le (```package fr.jbellec.demo```) est un petit bordel d'exemples :)
+Contient des exemples de code java, organisés par package.
 
 # Projet KATA
 
