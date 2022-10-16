@@ -1,9 +1,11 @@
-package fr.jbellec.demo.stream.demo1;
+package fr.jbellec.stream.demo1;
 
 public class Personne {
 
     public Double taille = 0.0d, poids = 0.0d;
+
     public String nom = "", prenom = "";
+
     public Couleur yeux = Couleur.INCONNU;
 
     public Personne() {
@@ -18,7 +20,7 @@ public class Personne {
         this.yeux = yeux;
     }
 
-	public String toString() {
+    public String toString() {
         String s = "Je m'appelle " + nom + " " + prenom;
         s += ", je pèse " + poids + " Kg";
         s += ", et je mesure " + taille + " cm.";

@@ -1,4 +1,4 @@
-package fr.jbellec.demo.jmh;
+package fr.jbellec.jmh;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;

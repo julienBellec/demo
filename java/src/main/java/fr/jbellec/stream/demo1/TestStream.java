@@ -1,4 +1,4 @@
-package fr.jbellec.demo.stream.demo1;
+package fr.jbellec.stream.demo1;
 
 import java.io.IOException;
 import java.nio.file.Files;
