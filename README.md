@@ -1,7 +1,3 @@
-# TODO
-
-* Ajouter des exemples sur les regex
-
 # Projet java
 
 Contient des exemples de code java, organisés par package.
